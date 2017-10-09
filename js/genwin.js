@@ -1,4 +1,4 @@
-function gen_winner() {
+function gen_winner(lotto) {
   var numbers = [,,,,,,];
   numbers[0] = getRandomNum();
   for(var i=1;i<numbers.length;i++) {
@@ -8,7 +8,6 @@ function gen_winner() {
     } while(numbers.indexOf(n) != -1)
     numbers[i] = n;
   }
-
   var swapped;
   do {
       swapped = false;
@@ -30,11 +29,11 @@ function gen_winner() {
     num4: numbers[3],
     num5: numbers[4],
     num6: numbers[5],
-    id: 1
+    lid: lotto
   },
   function(data,status){
       console.log("Data: " + data + "\nStatus: " + status);
-      location.reload();
+      //location.reload();
   });
 }
 

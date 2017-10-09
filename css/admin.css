@@ -5,37 +5,8 @@
   padding: 0.5em;
   font-size: 1.2em;
 }
-header {
-  text-align: center;
-  padding-top: 1em;
-}
-footer {
-  text-align: center;
-  padding-top: 1em;
-}
-nav {
-  text-align: center;
-}
-span {
-  display: block;
-  border: 1px black solid;
-  padding: 0.5em;
-  width: 50px;
-  margin-right: 2px;
-  text-align: center;
-}
 .info {
   display: block;
-}
-.numbers {
-  display: flex;
-}
-.lottery {
-  padding: 10px;
-  background-color: #baffbb;
-}
-.lottery:nth-of-type(2n) {
-  background-color: #baedff;
 }
 #new {
   border: 1px black solid;

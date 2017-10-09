@@ -14,6 +14,19 @@
         <div>Prize: $<?php echo $row['prize'] ?></div>
         <div>Date: <?php echo $row['date'] ?></div>
       </div>
+      <?php
+      if(is_null($row['win_1'])) {
+        ?>
+        <div class="row">
+          <div class="col s4 numbers">Lottery has not been drawn</div>
+          <div class="col s2 numbers">
+            <a class="waves-effect waves-light btn" onclick="gen_winner(<?php echo $row['lotto_id'] ?>)">Generate Numbers</a>
+          </div>
+        </div>
+      </div>
+        <?php
+      } else {
+      ?>
       <h3>Numbers</h3>
       <div class="row">
         <div class="col s1 numbers"><?php echo $row['win_1'] ?></div>
@@ -25,6 +38,7 @@
       </div>
     </div>
     <?php
+    }
   }
   ?>
 </div>
