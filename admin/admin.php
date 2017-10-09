@@ -19,30 +19,25 @@
   <div id="overlay" onClick="display(false)"></div>
 
   <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">My Lotto</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">My Lotto Admin</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">View Lotteries</a></li>
-        <li><a href="#">Navbar Link</a></li>
-        <li><a href="#">Navbar Link</a></li>
+        <li><a href="../view.php?page=logout">Logout</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
+        <li><a href="../view.php?page=logout">Logout</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
+
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center orange-text">Admin Panel</h1>
+      <h1 class="header center orange-text">Welcome, Admin!</h1>
       <div class="row center">
         <h5 class="header col s12 light">Create and Manage Lotteries</h5>
       </div>
-      <div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
-      </div>
-      <br><br>
     </div>
   </div>
 
@@ -62,30 +57,5 @@
     <div id="closeModal" onClick="display(false)">X</div>
     <?php include('../php/form_lottery.php'); ?>
   </div>
-
-  <footer class="page-footer orange">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-      Made by Daniel Johansson
-      </div>
-    </div>
-  </footer>
   </body>
 </html>

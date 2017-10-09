@@ -28,7 +28,33 @@ if(isset($_POST['create'])) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
-  if(isset($_POST['loggingin'])) {
+  if(isset($_POST['register'])) {
+    $first_name = !empty($_POST['first_name'])? test_user_input(($_POST['first_name'])): null;
+    $last_name = !empty($_POST['last_name'])? test_user_input(($_POST['last_name'])): null;
+    $dob = !empty($_POST['dob'])? test_user_input(($_POST['dob'])): null;
+    $email = !empty($_POST['email'])? test_user_input(($_POST['email'])): null;
+    $password2 = !empty($_POST['password'])? test_user_input(($_POST['password'])): null;
+    $usertype = !empty($_POST['usertype'])? test_user_input(($_POST['usertype'])): null;
+    $password = password_hash($password2, PASSWORD_DEFAULT);
+    try {
+      $data = array(
+        'first_name' => $first_name,
+        'last_name' => $last_name,
+        'dob' => $dob,
+        'email' => $email,
+        'password' => $password,
+        'usertype' => $usertype
+      );
+      $table = "members";
+      insertData($table,$data);
+      header('location:index.php');
+    } catch (PDOException $e) {
+      echo $e->getMessage();
+      die();
+    }
+  }
+
+  if(isset($_POST['login'])) {
     $email = !empty($_POST['email'])? test_user_input(($_POST['email'])): null;
   	$password = !empty($_POST['password'])? test_user_input(($_POST['password'])): null;
   	try
@@ -39,12 +65,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   	$stmt->execute();
     $rows = $stmt -> fetch();
   		if (password_verify($password, $rows['password'])) {
-  		   $_SESSION["user"] = $username;
-  			 $_SESSION["user_id"] = $rows['admin_id'];
-  	 		 $_SESSION["role"] = $rows['role'];
+  		   $_SESSION["user"] = $rows['first_name'];
+     		 $_SESSION["email"] = $rows['email'];
+  			 $_SESSION["user_id"] = $rows['member_id'];
+  	 		 $_SESSION["usertype"] = $rows['usertype'];
   		   $_SESSION["login"] = true;
   			 //print_r($_SESSION);
-  		   header('location:admin/admin.php');
+         if($rows['usertype'] == 'admin') {
+           header('location:admin/admin.php');
+         }
+         if($rows['usertype'] == 'member') {
+           header('location:index.php');
+         }
   		}
   		else {
   			header('location:view.php?page=login');

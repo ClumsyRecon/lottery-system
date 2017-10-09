@@ -19,7 +19,7 @@
         ?>
         <div class="row">
           <h3>Lottery has not been drawn yet</h3>
-          <a class="waves-effect waves-light btn" onclick="gen_winner(<?php echo $row['lotto_id'] ?>)">Generate Numbers</a>
+          <a class="waves-effect waves-light btn red" onclick="gen_winner(<?php echo $row['lotto_id'] ?>)">Generate Numbers</a>
         </div>
       </div>
         <?php

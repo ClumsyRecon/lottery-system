@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 function db_object() {
   try {
     $db = new PDO("mysql:host=localhost;dbname=lottery_system;charset=utf8","root","");
@@ -31,6 +33,26 @@ function test_user_input($data) {
   $data = htmlspecialchars($data);
   return $data;
 }
+
+function insertData($table, $data) {
+  $conn = db_object();
+  if(!empty($data) && is_array($data)) {
+    $columns = '';
+    $values = '';
+    $i = 0;
+    $columnString = implode(',', array_keys($data));
+    $valueString = ":".implode(',:', array_keys($data));
+    $sql = "INSERT INTO ".$table." (".$columnString.") VALUES (".$valueString.")";
+    $query = $conn->prepare($sql);
+    print_r($data);
+    foreach ($data as $key => $val) {
+      $query->bindValue(':'.$key, $val);
+    }
+    $insert = $query->execute();
+  }
+  return $insert;
+}
+
 
 
 function db_get_tickets() {

@@ -10,6 +10,11 @@ switch ($_GET['page']) {
     include_once('php/form_login.php');
     break;
 
+  case 'logout':
+    session_destroy();
+    header('location:index.php');
+    break;
+
   case 'lotteries':
     show_lotteries(db_get_lotteries());
     break;
