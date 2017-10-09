@@ -29,22 +29,25 @@ if(isset($_POST['create'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
   if(isset($_POST['loggingin'])) {
-    $username = !empty($_POST['username'])? test_user_input(($_POST['username'])): null;
+    $email = !empty($_POST['email'])? test_user_input(($_POST['email'])): null;
   	$password = !empty($_POST['password'])? test_user_input(($_POST['password'])): null;
   	try
   	{
-  	$stmt = $conn->prepare("SELECT password, usertype FROM admin WHERE username=:user");
-  	$stmt->bindParam(':user', $username);
+    $conn = db_object();
+  	$stmt = $conn->prepare("SELECT first_name, password, usertype FROM members WHERE email=:user");
+  	$stmt->bindParam(':user', $email);
   	$stmt->execute();
-  	$rows = $stmt -> fetch();
+    $rows = $stmt -> fetch();
   		if (password_verify($password, $rows['password'])) {
   		   $_SESSION["user"] = $username;
-     		 $_SESSION["userType"] = $rows['usertype'];
-  		   $_SESSION["loggedin"] = true;
-  		   header('location:../admin/admin.php');
+  			 $_SESSION["user_id"] = $rows['admin_id'];
+  	 		 $_SESSION["role"] = $rows['role'];
+  		   $_SESSION["login"] = true;
+  			 //print_r($_SESSION);
+  		   header('location:admin/admin.php');
   		}
   		else {
-  			header('location:../view.php?page=login');
+  			header('location:view.php?page=login');
   		}
   	}
   	catch(PDOException $e) {

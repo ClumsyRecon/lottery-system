@@ -1,10 +1,21 @@
 <?php
 include_once('model.php');
-show_tickets(db_get_tickets());
 
 switch ($_GET['page']) {
+  case 'register':
+    include_once('php/form_registration.php');
+    break;
+
   case 'login':
     include_once('php/form_login.php');
+    break;
+
+  case 'lotteries':
+    show_lotteries(db_get_lotteries());
+    break;
+
+  case 'tickets':
+    show_tickets(db_get_tickets());
     break;
 
   default:

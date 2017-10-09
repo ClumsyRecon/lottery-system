@@ -25,6 +25,14 @@ function db_authentication() {
   }
 }
 
+function test_user_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+
 function db_get_tickets() {
   $conn = db_object();
   if($conn == false) {
@@ -42,8 +50,6 @@ function db_get_tickets() {
   return $res->fetchAll(PDO::FETCH_ASSOC);
 }
 
-//show_tickets(db_get_tickets());
-
 function show_tickets($tickets) {
   echo '<fieldset><main>Ticket</main>';
   foreach ($tickets as $ticket) {
@@ -51,6 +57,33 @@ function show_tickets($tickets) {
   }
   echo '</fieldset>';
 }
+
+
+function db_get_lotteries() {
+  $conn = db_object();
+  if($conn == false) {
+    return false;
+  }
+  $sql = "SELECT lotteries.*, CONCAT(first_name, ' ', last_name) AS 'owner' FROM members, tickets WHERE tickets.user_id = members.member_id";
+
+  try {
+    $res = $conn->prepare($sql);
+    $res->execute();
+  } catch (PDOException $e) {
+    $_SESSION['error'] = $e;
+    return false;
+  }
+  return $res->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function show_lotteries($tickets) {
+  echo '<fieldset><main>Ticket</main>';
+  foreach ($tickets as $ticket) {
+    echo '<div>' . $ticket['owner'] . '<ol><li>' . $ticket['num_1'] . '</li><li>' . $ticket['num_2'] . '</li><li>' . $ticket['num_3'] . '</li><li>' . $ticket['num_4'] . '</li><li>' . $ticket['num_5'] . '</li><li>' . $ticket['num_6'] . '</li></ol></div>';
+  }
+  echo '</fieldset>';
+}
+
 
 function create_lottery($data) {
   $conn = db_object();
