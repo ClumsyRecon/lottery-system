@@ -20,7 +20,6 @@ function gen_winner(lotto) {
           }
       }
   } while (swapped);
-  // Change ID to the current lottery ID
   $.post("../php/generate_winner.php",
   {
     num1: numbers[0],
@@ -33,7 +32,7 @@ function gen_winner(lotto) {
   },
   function(data,status){
       console.log("Data: " + data + "\nStatus: " + status);
-      //location.reload();
+      location.reload();
   });
 }
 

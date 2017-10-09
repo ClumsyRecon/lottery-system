@@ -18,13 +18,26 @@ h2 {
 h3 {
   font-size: 1.6em;
 }
+#new_lotto {
+  z-index: 0;
+}
+#new_lotto_label {
+  cursor: pointer;
+}
 .numbers {
   border: 1px solid #eee;
   margin: 7px 0;
   text-align: center;
   line-height: 50px;
+  min-width: 50px;
   font-size: 1.4em;
   background-color: tomato;
   color: white;
   padding: 0;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+.lottery .row {
+  border-bottom: 1px black solid;
+  padding-bottom: 15px;
 }

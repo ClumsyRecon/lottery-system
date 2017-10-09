@@ -14,10 +14,6 @@
   margin: 0;
   margin-top: 1em;
 }
-#ltryForm * {
-  display: block;
-  margin-bottom: 5px;
-}
 #overlay {
   display: none;
   position:fixed;
@@ -33,8 +29,8 @@
   position:fixed;
   top: 20px;
   bottom: 20px;
-  left: 35%;
-  width:30%;
+  left: 25%;
+  width:50%;
   height:auto;
   background-color: #f2f2f2;
   padding: 20px;

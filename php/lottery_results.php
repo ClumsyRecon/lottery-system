@@ -18,10 +18,8 @@
       if(is_null($row['win_1'])) {
         ?>
         <div class="row">
-          <div class="col s4 numbers">Lottery has not been drawn</div>
-          <div class="col s2 numbers">
-            <a class="waves-effect waves-light btn" onclick="gen_winner(<?php echo $row['lotto_id'] ?>)">Generate Numbers</a>
-          </div>
+          <h3>Lottery has not been drawn yet</h3>
+          <a class="waves-effect waves-light btn" onclick="gen_winner(<?php echo $row['lotto_id'] ?>)">Generate Numbers</a>
         </div>
       </div>
         <?php

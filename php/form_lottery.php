@@ -2,7 +2,7 @@
   <form class="col s12" action="../controller.php" method="post">
     <div class="row">
       <div class="input-field col s6">
-        <input placeholder="Placeholder" id="name" name="name" type="text" class="validate">
+        <input placeholder="Lotto" id="name" name="name" type="text" class="validate">
         <label for="name">Lottery Name</label>
       </div>
       <div class="input-field col s6">
@@ -17,7 +17,9 @@
       </div>
     </div>
     <input id="create" type="hidden" name="create" value="lottery">
-    <input id="submit" type="submit" value="Create">
+    <button class="btn waves-effect waves-light" type="submit" name="action">Create
+      <i class="material-icons right">send</i>
+    </button>
   </form>
 </div>
 <script type="text/javascript">
@@ -28,6 +30,6 @@
   clear: 'Clear',
   close: 'Ok',
   closeOnSelect: true, // Close upon selecting a date,
-  format: 'dd/mm/yyyy'
+  format: 'yyyy-mm-dd'
   });
 </script>
