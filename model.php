@@ -60,7 +60,7 @@ function db_get_tickets() {
   if($conn == false) {
     return false;
   }
-  $sql = "SELECT tickets.*, CONCAT(first_name, ' ', last_name) AS 'owner' FROM members, tickets WHERE tickets.user_id = members.member_id";
+  $sql = "SELECT tickets.*, CONCAT(first_name, ' ', last_name) AS 'owner' FROM members, tickets WHERE tickets.user_id = members.member_id ORDER BY lotto_id, user_id";
 
   try {
     $res = $conn->prepare($sql);
@@ -73,11 +73,30 @@ function db_get_tickets() {
 }
 
 function show_tickets($tickets) {
-  echo '<fieldset><main>Ticket</main>';
+  include_once('css/cdn.php');
+  ?>
+  <link href="css/styled.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <div class="container">
+  <div class="lottery">
+  <?php
   foreach ($tickets as $ticket) {
-    echo '<div>' . $ticket['owner'] . '<ol><li>' . $ticket['num_1'] . '</li><li>' . $ticket['num_2'] . '</li><li>' . $ticket['num_3'] . '</li><li>' . $ticket['num_4'] . '</li><li>' . $ticket['num_5'] . '</li><li>' . $ticket['num_6'] . '</li></ol></div>';
+  ?>
+    <h2><?php echo $ticket['owner'] ?></h2>
+    <h3>Numbers</h3>
+    <div class="row">
+      <div class="col s1 numbers"><?php echo $ticket['num_1'] ?></div>
+      <div class="col s1 numbers"><?php echo $ticket['num_2'] ?></div>
+      <div class="col s1 numbers"><?php echo $ticket['num_3'] ?></div>
+      <div class="col s1 numbers"><?php echo $ticket['num_4'] ?></div>
+      <div class="col s1 numbers"><?php echo $ticket['num_5'] ?></div>
+      <div class="col s1 numbers"><?php echo $ticket['num_6'] ?></div>
+    </div>
+  <?php
   }
-  echo '</fieldset>';
+  ?>
+  </div>
+  </div>
+  <?php
 }
 
 
