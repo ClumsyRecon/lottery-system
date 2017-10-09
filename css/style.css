@@ -1,0 +1,40 @@
+#log {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  padding: 0.5em;
+  font-size: 1.2em;
+}
+header {
+  text-align: center;
+  padding-top: 1em;
+}
+footer {
+  text-align: center;
+  padding-top: 1em;
+}
+nav {
+  text-align: center;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li {
+  display: inline;
+  border: 1px grey solid;
+  padding: 0.5em;
+}
+#book-list {
+  width: 80%;
+  margin: 0 10%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-top: 2em;
+}
+.lottery {
+  width: 100%;
+  margin-bottom: 1.5em;
+}
