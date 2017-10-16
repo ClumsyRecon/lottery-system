@@ -1,1 +1,1 @@
-This is my final project which is a lottery system created using PHP and JavaScript
+This is my final project which is a lottery system created using PHP and JavaScript, as an Admin you can create lotteries for Members to purchaces tickets for and you can view winners of previous lotteries. Members are able to view current lotteries and buy tickets, and they can also view tickets which they have bough to lotteries.

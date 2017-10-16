@@ -4,7 +4,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>Admin Panel</title>
-<?php include_once('../css/cdn.php'); ?>
+  <?php
+  session_start();
+  include_once('../css/cdn.php');
+  ?>
   <link href="../css/styled.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link rel="stylesheet" href="../css/admin.css">
   <link rel="stylesheet" href="../css/modal.css">
@@ -53,5 +56,7 @@
     <div id="closeModal" onClick="display(false)">X</div>
     <?php include('../php/form_lottery.php'); ?>
   </div>
+
+  <?php include('../php/footer.php'); ?>
   </body>
 </html>

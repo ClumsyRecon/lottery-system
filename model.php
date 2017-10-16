@@ -77,24 +77,24 @@ function show_tickets($tickets) {
   ?>
   <link href="css/styled.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <div class="container">
-  <div class="lottery">
-  <?php
-  foreach ($tickets as $ticket) {
-  ?>
-    <h2><?php echo $ticket['owner'] ?></h2>
-    <h3>Numbers</h3>
-    <div class="row">
-      <div class="col s1 numbers"><?php echo $ticket['num_1'] ?></div>
-      <div class="col s1 numbers"><?php echo $ticket['num_2'] ?></div>
-      <div class="col s1 numbers"><?php echo $ticket['num_3'] ?></div>
-      <div class="col s1 numbers"><?php echo $ticket['num_4'] ?></div>
-      <div class="col s1 numbers"><?php echo $ticket['num_5'] ?></div>
-      <div class="col s1 numbers"><?php echo $ticket['num_6'] ?></div>
+    <div class="lottery">
+      <?php
+      foreach ($tickets as $ticket) {
+      ?>
+        <h2><?php echo $ticket['owner'] ?></h2>
+        <h3>Numbers</h3>
+        <div class="row">
+          <div class="col s1 numbers"><?php echo $ticket['num_1'] ?></div>
+          <div class="col s1 numbers"><?php echo $ticket['num_2'] ?></div>
+          <div class="col s1 numbers"><?php echo $ticket['num_3'] ?></div>
+          <div class="col s1 numbers"><?php echo $ticket['num_4'] ?></div>
+          <div class="col s1 numbers"><?php echo $ticket['num_5'] ?></div>
+          <div class="col s1 numbers"><?php echo $ticket['num_6'] ?></div>
+        </div>
+      <?php
+      }
+      ?>
     </div>
-  <?php
-  }
-  ?>
-  </div>
   </div>
   <?php
 }
