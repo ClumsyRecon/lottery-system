@@ -1,12 +1,19 @@
 <?php
 include_once('model.php');
+include_once('css/cdn.php');
 
 switch ($_GET['page']) {
   case 'register':
+    ?>
+    <link href="css/forms.css" rel="stylesheet">
+    <?php
     include_once('php/form_registration.php');
     break;
 
   case 'login':
+    ?>
+    <link href="css/forms.css" rel="stylesheet">
+    <?php
     include_once('php/form_login.php');
     break;
 

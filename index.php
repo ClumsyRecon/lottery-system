@@ -61,15 +61,9 @@ session_start();
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
+      <script src="js/display-user.js"></script>
 
-      <?php
-      $user = ", Guest!";
-      if(isset($_SESSION['user'])) {
-        $user = ', '.$_SESSION['user'].'!';
-      }
-      ?>
-
-      <h1 class="header center orange-text">Welcome<?php echo $user ?></h1>
+      <h1 class="header center orange-text">Welcome!</h1>
       <div class="row center">
         <h5 class="header col s12 light">View Lotteries and Purchase Tickets for a chance to win</h5>
       </div>

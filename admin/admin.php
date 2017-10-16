@@ -33,7 +33,9 @@
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center orange-text">Welcome, Admin!</h1>
+      <script src="../js/display-admin.js"></script>
+
+      <h1 class="header center orange-text">Welcome!</h1>
       <div class="row center">
         <h5 class="header col s12 light">Create and Manage Lotteries</h5>
       </div>
