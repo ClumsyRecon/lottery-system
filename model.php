@@ -105,8 +105,8 @@ function db_get_lotteries() {
   if($conn == false) {
     return false;
   }
-  $sql = "SELECT lotteries.*, CONCAT(first_name, ' ', last_name) AS 'owner' FROM members, tickets WHERE tickets.user_id = members.member_id";
-
+  //$sql = "SELECT lotteries.*, CONCAT(first_name, ' ', last_name) AS 'owner', tickets.num_1, tickets.num_2, tickets.num_3, tickets.num_4, tickets.num_5, tickets.num_6 FROM members, tickets, lotteries WHERE tickets.user_id = members.member_id";
+  $sql = "SELECT * FROM lotteries ORDER BY date";
   try {
     $res = $conn->prepare($sql);
     $res->execute();
@@ -117,12 +117,29 @@ function db_get_lotteries() {
   return $res->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function show_lotteries($tickets) {
-  echo '<fieldset><main>Ticket</main>';
-  foreach ($tickets as $ticket) {
-    echo '<div>' . $ticket['owner'] . '<ol><li>' . $ticket['num_1'] . '</li><li>' . $ticket['num_2'] . '</li><li>' . $ticket['num_3'] . '</li><li>' . $ticket['num_4'] . '</li><li>' . $ticket['num_5'] . '</li><li>' . $ticket['num_6'] . '</li></ol></div>';
-  }
-  echo '</fieldset>';
+function show_lotteries($lotteries) {
+  include_once('css/cdn.php');
+  ?>
+  <link href="css/styled.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <div class="container">
+    <div class="lottery">
+      <fieldset>
+        <main>Ticket</main>
+        <?php
+        foreach ($lotteries as $lottery) {
+        ?>
+          <div class="lottery">
+            <h2><?php echo $lottery['name'] ?></h2>
+            <div class="row info">
+              <div class="col s2 numbers">Prize: $<?php echo $lottery['prize'] ?></div>
+              <div class="col s2 numbers">Date: <?php $date = DateTime::createFromFormat('Y-m-d', $lottery['date']); echo $date->format('d-m-y'); ?></div>
+            </div>
+          </div>
+          <?php
+        }
+        ?>
+        </fieldset>
+        <?php
 }
 
 
