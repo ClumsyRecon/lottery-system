@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once('model.php');
 
 if(isset($_POST['create'])) {
@@ -60,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   	try
   	{
     $conn = db_object();
-  	$stmt = $conn->prepare("SELECT first_name, password, usertype FROM members WHERE email=:user");
+  	$stmt = $conn->prepare("SELECT first_name, email, member_id, password, usertype FROM members WHERE email=:user");
   	$stmt->bindParam(':user', $email);
   	$stmt->execute();
     $rows = $stmt -> fetch();
@@ -86,6 +85,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   		echo "Account creation problems".$e -> getMessage();
   		die();
   	}
+  }
+
+  if(isset($_POST['lotto_id'])) {
+    echo $_SESSION["user"];
+    echo $_SESSION["email"];
+    echo $_SESSION["user_id"];
+    echo $_POST["lotto_id"];
   }
 }
 ?>
