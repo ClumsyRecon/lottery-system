@@ -21,7 +21,7 @@ function submit() {
   function(data,status){
     console.log("Data: " + data + "\nStatus: " + status);
     feedback.innerHTML = status;
-    window.location.href = "index.php";
+    window.location.href = "view.php?page=tickets";
   });
 
 }

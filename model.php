@@ -140,6 +140,9 @@ function show_lotteries2($lotteries, $tickets) {
     <h1><?php echo $_SESSION['member']; ?></h1>
     <div class="lottery">
       <?php
+      if (empty($lotteries)) {
+        echo '<h3>You have no tickets.</h3>';
+      }
       foreach ($lotteries as $lottery) {
       ?>
         <div class="lottery">
@@ -285,6 +288,7 @@ function show_lotteries2($lotteries, $tickets) {
       ?>
     </div>
   </div>
+  <?php include_once('php/footer.php'); ?>
 <?php
 }
 
@@ -421,15 +425,21 @@ function show_lotteries($lotteries) {
               echo $day1.' '.$day2.' '.$month.' '.$year;
               ?>
             </h3>
-            <form action="controller.php" method="get">
-              <input type="hidden" name="lotto_id" value=<?php echo $lottery['lotto_id']; ?>>
-              <input type="hidden" name="lotto_name" value=<?php echo $lottery['name']; ?>>
-              <input type="hidden" name="lotto_date" value='<?php echo $day1." ".$day2." ".$month." ".$year; ?>'>
-              <input type="hidden" name="lotto_prize" value=<?php echo '$'.$prize; ?>>
-              <button class="btn waves-effect waves-light" type="submit">Buy Ticket
-                <i class="material-icons right">send</i>
-              </button>
-            </form>
+            <?php
+            if(isset($_SESSION['login']) && $_SESSION['login']) {
+            ?>
+              <form action="controller.php" method="get">
+                <input type="hidden" name="lotto_id" value=<?php echo $lottery['lotto_id']; ?>>
+                <input type="hidden" name="lotto_name" value=<?php echo $lottery['name']; ?>>
+                <input type="hidden" name="lotto_date" value='<?php echo $day1." ".$day2." ".$month." ".$year; ?>'>
+                <input type="hidden" name="lotto_prize" value=<?php echo '$'.$prize; ?>>
+                <button class="btn waves-effect waves-light" type="submit">Buy Ticket
+                  <i class="material-icons right">send</i>
+                </button>
+              </form>
+              <?php
+            }
+            ?>
           </div>
         </div>
         <?php
