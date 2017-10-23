@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -46,10 +45,8 @@
     <?php include('../php/lottery_results.php') ?>
     <div class="row" onClick="display(true)">
       <div class="col s2">
-        <a id="new_lotto" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
-      </div>
-      <div class="col s4">
-        <h3 id="new_lotto_label">Create Lottery</h3>
+        <a id="new_lotto" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i><h3 id="new_lotto_label">Create Lottery</h3></a>
+
       </div>
     </div>
   </div>

@@ -3,18 +3,41 @@
 
   function pick(i) {
     n = parseInt(i.id);
-    if(nums.indexOf(n) > -1) {
-      i.style.backgroundColor = "silver";
+    /* if(nums.indexOf(n) > -1) {
+      i.style.backgroundColor = "tomato";
       shuffledown(nums.indexOf(n));
       nums[nums.indexOf(n)] = '';
       selected -= 1;
-    } else if(selected < 6) {
-      i.style.backgroundColor = "cyan";
+    } else */
+    if(selected < 6 && nums.indexOf(n) <= -1) {
+      i.style.backgroundColor = "#29b6f6";
       nums[selected] = n;
       selected += 1;
     }
     sort();
-    output.innerHTML = nums;
+    updateOutput();
+    if(selected == 6) {
+      buy.disabled = false;
+    }
+  }
+
+  function wipe() {
+    for (var i = 0; i < nums.length; i++) {
+      document.getElementById(nums[i]).removeAttribute("style");
+    }
+    nums = [];
+    selected = 0;
+    buy.disabled = true;
+    updateOutput();
+  }
+
+  function updateOutput() {
+    var outstr = "<div class='row'>";
+    for (var i = 0; i < nums.length; i++) {
+      outstr += "<div class='col s1 numbers'>" + nums[i] + "</div>";
+    }
+    outstr += "</div>";
+    output.innerHTML = outstr;
   }
 
   function shuffledown(n) {

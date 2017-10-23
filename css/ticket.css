@@ -1,15 +1,6 @@
-#numbers {
-  border: 1px black solid;
+#output {
+  font-size: 1em;
 }
-.row {
-  display: flex;
-}
-.row span {
-  width: 50px;
-  height: 35px;
-  padding-top: 15px;
-  margin-bottom: 5px;
-  margin-right: 5px;
-  text-align: center;
-  background-color: #9F9;
+.ui {
+  margin-left: -.75rem;
 }

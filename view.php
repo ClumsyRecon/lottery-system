@@ -7,6 +7,7 @@ switch ($_GET['page']) {
     ?>
     <link href="css/forms.css" rel="stylesheet">
     <?php
+    include_once('php/header.php');
     include_once('php/form_registration.php');
     break;
 
@@ -14,6 +15,7 @@ switch ($_GET['page']) {
     ?>
     <link href="css/forms.css" rel="stylesheet">
     <?php
+    include_once('php/header.php');
     include_once('php/form_login.php');
     break;
 
@@ -23,15 +25,17 @@ switch ($_GET['page']) {
     break;
 
   case 'lotteries':
+    include_once('php/header.php');
     show_lotteries(db_get_lotteries());
     break;
 
   case 'tickets':
+    include_once('php/header.php');
     show_tickets(db_get_tickets());
     break;
 
   default:
-    # code...
+    echo 'Page not found.';
     break;
 }
  ?>

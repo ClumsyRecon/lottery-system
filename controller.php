@@ -94,4 +94,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     echo $_POST["lotto_id"];
   }
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+  if(isset($_GET['lotto_id'])) {
+    header('location:php/form_ticket.php?lotto_id='.$_GET['lotto_id']);
+  }
+}
 ?>
