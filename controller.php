@@ -21,7 +21,7 @@ if(isset($_POST['create'])) {
                     'num_6' => $_POST['num_6']
                   );
     new_ticket($values);
-    header('Location: view.php?request=tickets');
+    header('Location: index.php');
   }
 }
 
@@ -97,7 +97,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
   if(isset($_GET['lotto_id'])) {
-    header('location:php/form_ticket.php?lotto_id='.$_GET['lotto_id']);
+    $_SESSION["lotto_id"] = $_GET['lotto_id'];
+    $_SESSION["lotto_name"] = $_GET['lotto_name'];
+    $_SESSION["lotto_date"] = $_GET['lotto_date'];
+    $_SESSION["lotto_prize"] = $_GET['lotto_prize'];
+    header('location:view.php?page=buy_tickets');
   }
 }
 ?>

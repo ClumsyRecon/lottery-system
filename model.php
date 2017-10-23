@@ -231,7 +231,10 @@ function show_lotteries($lotteries) {
               ?>
             </h3>
             <form action="controller.php" method="get">
-              <input type="hidden" name="lotto_id" value=<?php echo $lottery['lotto_id'] ?>>
+              <input type="hidden" name="lotto_id" value=<?php echo $lottery['lotto_id']; ?>>
+              <input type="hidden" name="lotto_name" value=<?php echo $lottery['name']; ?>>
+              <input type="hidden" name="lotto_date" value='<?php echo $day1." ".$day2." ".$month." ".$year; ?>'>
+              <input type="hidden" name="lotto_prize" value=<?php echo '$'.$prize; ?>>
               <button class="btn waves-effect waves-light" type="submit">Buy Ticket <?php echo $lottery['lotto_id'] ?>
                 <i class="material-icons right">send</i>
               </button>

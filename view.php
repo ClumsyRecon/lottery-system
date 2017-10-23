@@ -1,13 +1,13 @@
 <?php
 include_once('model.php');
 include_once('css/cdn.php');
+include_once('php/header.php');
 
 switch ($_GET['page']) {
   case 'register':
     ?>
     <link href="css/forms.css" rel="stylesheet">
     <?php
-    include_once('php/header.php');
     include_once('php/form_registration.php');
     break;
 
@@ -15,7 +15,6 @@ switch ($_GET['page']) {
     ?>
     <link href="css/forms.css" rel="stylesheet">
     <?php
-    include_once('php/header.php');
     include_once('php/form_login.php');
     break;
 
@@ -24,13 +23,11 @@ switch ($_GET['page']) {
     header('location:index.php');
     break;
 
-  case 'lotteries':
-    include_once('php/header.php');
-    show_lotteries(db_get_lotteries());
+  case 'buy_tickets':
+    include_once('php/form_ticket.php');
     break;
 
   case 'tickets':
-    include_once('php/header.php');
     show_tickets(db_get_tickets());
     break;
 

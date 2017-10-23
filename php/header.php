@@ -1,7 +1,7 @@
 <nav class="light-blue lighten-1" role="navigation">
   <div class="nav-wrapper container"><a id="logo-container" href="index.php" class="brand-logo">My Lotto</a>
     <ul class="right hide-on-med-and-down">
-      <li><a href="view.php?page=lotteries">View Lotteries</a></li>
+      <li><a href="index.php">Home</a></li>
       <?php
       if(isset($_SESSION["login"])) {
         ?>
@@ -18,7 +18,7 @@
     </ul>
 
     <ul id="nav-mobile" class="side-nav">
-      <li><a href="view.php?page=lotteries">View Lotteries</a></li>
+      <li><a href="index.php">Home</a></li>
       <?php
       if(isset($_SESSION["login"])) {
         ?>

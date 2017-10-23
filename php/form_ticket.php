@@ -1,16 +1,15 @@
-<link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="../css/ticket.css">
-<link rel="stylesheet" href="../css/styled.css">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/styled.css">
+<link rel="stylesheet" href="css/ticket.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="../js/numselect.js"></script>
-<?php include_once('../css/cdn.php'); ?>
+<script src="js/numselect.js"></script>
 <script type="text/javascript">
 //Change User ID
 function submit() {
-  $.post("../controller.php",
+  $.post("controller.php",
   {
-    lotto_id: <?php echo $_GET['lotto_id']; ?>,
-    user_id: <?php session_start(); echo $_SESSION["user_id"]; ?>,
+    lotto_id: <?php echo $_SESSION['lotto_id']; ?>,
+    user_id: <?php echo $_SESSION["user_id"]; ?>,
     num_1: nums[0],
     num_2: nums[1],
     num_3: nums[2],
@@ -20,13 +19,25 @@ function submit() {
     create: 'ticket'
   },
   function(data,status){
-      console.log("Data: " + data + "\nStatus: " + status);
-      feedback.innerHTML = data;
+    console.log("Data: " + data + "\nStatus: " + status);
+    feedback.innerHTML = status;
+    window.location.href = "index.php";
   });
+
 }
 </script>
 <div class="container">
-  <h4 class="ui">Please select 6 numbers to proceed and purchase your ticket.</h4>
+  <h2>You are purchasing a ticket for this lottery</h2>
+  <div class="lottery">
+    <div class="lottery">
+      <h3><?php echo $_SESSION['lotto_name'] ?></h3>
+      <div class="row info">
+        <h4>Prize: <?php echo $_SESSION['lotto_prize'] ?></h4>
+        <h4>Date: <?php echo $_SESSION['lotto_date'] ?></h4>
+      </div>
+    </div>
+  </div>
+  <h4 class="ui">Please select 6 numbers to proceed to click Buy.</h4>
   <div class='row'>
   <?php
     for ($row = 0; $row <= 5; $row++) {
@@ -48,3 +59,5 @@ function submit() {
     <p id="feedback"></p>
   </div>
 </div>
+
+<?php include_once('footer.php'); ?>
