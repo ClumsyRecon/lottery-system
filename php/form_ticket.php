@@ -38,7 +38,7 @@ function submit() {
     </div>
   </div>
   <h4 class="ui">Please select 6 numbers to proceed to click Buy.</h4>
-  <div class='row'>
+  <div class='row sel'>
   <?php
     for ($row = 0; $row <= 5; $row++) {
       for ($i = 1; $i <= 10; $i++) {
