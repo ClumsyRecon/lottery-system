@@ -59,12 +59,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   	try
   	{
     $conn = db_object();
-  	$stmt = $conn->prepare("SELECT first_name, email, member_id, password, usertype FROM members WHERE email=:user");
+  	$stmt = $conn->prepare("SELECT first_name, last_name, email, member_id, password, usertype FROM members WHERE email=:user");
   	$stmt->bindParam(':user', $email);
   	$stmt->execute();
     $rows = $stmt -> fetch();
   		if (password_verify($password, $rows['password'])) {
   		   $_SESSION["user"] = $rows['first_name'];
+         $_SESSION["member"] = $rows['first_name'].' '.$rows['last_name'];
      		 $_SESSION["email"] = $rows['email'];
   			 $_SESSION["user_id"] = $rows['member_id'];
   	 		 $_SESSION["usertype"] = $rows['usertype'];

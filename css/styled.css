@@ -37,3 +37,6 @@ h3 {
 .row.info div {
   width: 150px;
 }
+.ticket {
+  margin-left: .75rem;
+}

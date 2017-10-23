@@ -28,7 +28,8 @@ switch ($_GET['page']) {
     break;
 
   case 'tickets':
-    show_tickets(db_get_tickets());
+    show_lotteries2(db_get_users_lotteries($_SESSION['user_id']), db_get_users_tickets($_SESSION['user_id']));
+    //show_tickets(db_get_tickets());
     break;
 
   default:
