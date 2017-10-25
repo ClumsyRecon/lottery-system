@@ -31,7 +31,7 @@ function gen_winner(lotto) {
     lid: lotto
   },
   function(data,status){
-      console.log("Data: " + data + "\nStatus: " + status);
+      //console.log("Data: " + data + "\nStatus: " + status);
       location.reload();
   });
 }

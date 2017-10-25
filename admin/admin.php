@@ -5,11 +5,15 @@
   <title>Admin Panel</title>
   <?php
   session_start();
+
   if(!isset($_SESSION['login'])) {
-    if($_SESSION['role'] != 'admin') {
-      header('Location:../index.php');
-    }
+    header('Location:../index.php');
   }
+
+  if($_SESSION['usertype'] == 'member') {
+    header('Location:../index.php');
+  }
+
   include_once('../css/cdn.php');
   ?>
   <link href="../css/styled.css" type="text/css" rel="stylesheet" media="screen,projection"/>
