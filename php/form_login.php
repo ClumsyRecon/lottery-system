@@ -1,3 +1,4 @@
+<link href="css/forms.css" rel="stylesheet">
 <div id="login">
   <form class="col s12" action="controller.php" method="post">
     <div>
@@ -18,4 +19,3 @@
     </button>
   </form>
 </div>
-<?php include_once('footer.php'); ?>

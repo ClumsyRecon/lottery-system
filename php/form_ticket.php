@@ -59,5 +59,3 @@ function submit() {
     <p id="feedback"></p>
   </div>
 </div>
-
-<?php include_once('footer.php'); ?>

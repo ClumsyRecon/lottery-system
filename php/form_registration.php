@@ -1,3 +1,4 @@
+<link href="css/forms.css" rel="stylesheet">
 <div id="registration">
   <form class="col s12" action="controller.php" method="post">
     <div>
@@ -55,4 +56,3 @@
   format: 'yyyy-mm-dd'
   });
 </script>
-<?php include_once('footer.php'); ?>

@@ -25,8 +25,7 @@ if(isset($_POST['create'])) {
   }
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST")
-{
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if(isset($_POST['register'])) {
     $first_name = !empty($_POST['first_name'])? test_user_input(($_POST['first_name'])): null;
     $last_name = !empty($_POST['last_name'])? test_user_input(($_POST['last_name'])): null;
@@ -48,9 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
       insertData($table,$data);
 
       $conn = db_object();
-    	$stmt = $conn->prepare("SELECT first_name, last_name, email, member_id, password, usertype FROM members WHERE email=:user");
-    	$stmt->bindParam(':user', $email);
-    	$stmt->execute();
+      $stmt = $conn->prepare("SELECT first_name, last_name, email, member_id, password, usertype FROM members WHERE email=:user");
+      $stmt->bindParam(':user', $email);
+      $stmt->execute();
       $rows = $stmt -> fetch();
       $_SESSION["user"] = $rows['first_name'];
       $_SESSION["member"] = $rows['first_name'].' '.$rows['last_name'];
@@ -67,36 +66,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
   if(isset($_POST['login'])) {
     $email = !empty($_POST['email'])? test_user_input(($_POST['email'])): null;
-  	$password = !empty($_POST['password'])? test_user_input(($_POST['password'])): null;
-  	try
-  	{
-    $conn = db_object();
-  	$stmt = $conn->prepare("SELECT first_name, last_name, email, member_id, password, usertype FROM members WHERE email=:user");
-  	$stmt->bindParam(':user', $email);
-  	$stmt->execute();
-    $rows = $stmt -> fetch();
-  		if (password_verify($password, $rows['password'])) {
-  		   $_SESSION["user"] = $rows['first_name'];
-         $_SESSION["member"] = $rows['first_name'].' '.$rows['last_name'];
-  			 $_SESSION["user_id"] = $rows['member_id'];
-  	 		 $_SESSION["usertype"] = $rows['usertype'];
-  		   $_SESSION["login"] = true;
-  			 //print_r($_SESSION);
-         if($rows['usertype'] == 'admin') {
-           header('location:admin/admin.php');
-         }
-         if($rows['usertype'] == 'member') {
-           header('location:index.php');
-         }
-  		}
-  		else {
-  			header('location:view.php?page=login');
-  		}
-  	}
-  	catch(PDOException $e) {
-  		echo "Account creation problems".$e -> getMessage();
-  		die();
-  	}
+    $password = !empty($_POST['password'])? test_user_input(($_POST['password'])): null;
+    try
+    {
+      $conn = db_object();
+      $stmt = $conn->prepare("SELECT first_name, last_name, email, member_id, password, usertype FROM members WHERE email=:user");
+      $stmt->bindParam(':user', $email);
+      $stmt->execute();
+      $rows = $stmt -> fetch();
+      if (password_verify($password, $rows['password'])) {
+        $_SESSION["user"] = $rows['first_name'];
+        $_SESSION["member"] = $rows['first_name'].' '.$rows['last_name'];
+        $_SESSION["user_id"] = $rows['member_id'];
+        $_SESSION["usertype"] = $rows['usertype'];
+        $_SESSION["login"] = true;
+        
+        if($rows['usertype'] == 'admin') {
+          header('location:admin/admin.php');
+        }
+        if($rows['usertype'] == 'member') {
+          header('location:index.php');
+        }
+      }
+      else {
+        header('location:view.php?page=login');
+      }
+    }
+    catch(PDOException $e) {
+      echo "Account creation problems".$e -> getMessage();
+      die();
+    }
   }
 
   if(isset($_POST['lotto_id'])) {
