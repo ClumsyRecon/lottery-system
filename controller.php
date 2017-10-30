@@ -132,5 +132,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $_SESSION["lotto_prize"] = $_GET['lotto_prize'];
     header('location:view.php?page=buy_tickets');
   }
+  if(isset($_GET['get_user'])) {
+    $guest['user'] = 'Guest';
+    header('Content-Type: application/json');
+    if(isset($_SESSION['user'])) {
+      echo json_encode($_SESSION);
+    } else {
+      echo json_encode($guest);
+    }
+  }
 }
 ?>
