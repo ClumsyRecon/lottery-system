@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["user_id"] = $rows['member_id'];
         $_SESSION["usertype"] = $rows['usertype'];
         $_SESSION["login"] = true;
-        
+
         if($rows['usertype'] == 'admin') {
           header('location:admin/admin.php');
         }
@@ -94,6 +94,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     catch(PDOException $e) {
       echo "Account creation problems".$e -> getMessage();
+      die();
+    }
+  }
+
+  if(isset($_POST['num1'])) {
+    try {
+      $data = array(
+        'win_1' => $_POST['num1'],
+        'win_2' => $_POST['num2'],
+        'win_3' => $_POST['num3'],
+        'win_4' => $_POST['num4'],
+        'win_5' => $_POST['num5'],
+        'win_6' => $_POST['num6'],
+        'lotto_id' => $_POST['lid']
+      );
+      generate_winner($data);
+    } catch (PDOException $e) {
+      echo $e->getMessage();
       die();
     }
   }

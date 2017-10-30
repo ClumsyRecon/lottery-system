@@ -402,6 +402,64 @@ function show_lotteries($lotteries) {
 <?php
 }
 
+function db_get_results() {
+  $conn = db_object();
+  if($conn == false) {
+    return false;
+  }
+  $sql = "SELECT * FROM lotteries ORDER BY date";
+  try {
+    $res = $conn->prepare($sql);
+    $res->execute();
+  } catch (PDOException $e) {
+    $_SESSION['error'] = $e;
+    return false;
+  }
+  return $res->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function show_results($results) {
+  ?>
+  <div id="results">
+    <?php
+    foreach($results as $result) {
+      ?>
+
+      <div class="lottery">
+        <h2><?php echo $result['name'] ?></h2>
+        <div class="info">
+          <div>Prize: $<?php echo $result['prize'] ?></div>
+          <div>Date: <?php echo $result['date'] ?></div>
+        </div>
+        <?php
+        if(is_null($result['win_1'])) {
+          ?>
+          <div class="row">
+            <h3>Lottery has not been drawn yet</h3>
+            <a class="waves-effect waves-light btn red" onclick="gen_winner(<?php echo $result['lotto_id'] ?>)">Generate Numbers</a>
+          </div>
+        </div>
+          <?php
+        } else {
+        ?>
+        <h3>Numbers</h3>
+        <div class="row">
+          <div class="col s1 numbers"><?php echo $result['win_1'] ?></div>
+          <div class="col s1 numbers"><?php echo $result['win_2'] ?></div>
+          <div class="col s1 numbers"><?php echo $result['win_3'] ?></div>
+          <div class="col s1 numbers"><?php echo $result['win_4'] ?></div>
+          <div class="col s1 numbers"><?php echo $result['win_5'] ?></div>
+          <div class="col s1 numbers"><?php echo $result['win_6'] ?></div>
+        </div>
+      </div>
+      <?php
+      }
+    }
+    ?>
+  </div>
+  <?php
+}
+
 function create_lottery($data) {
   $conn = db_object();
   if($conn == false) {
@@ -444,5 +502,17 @@ function new_ticket($data) {
     $insert = $query->execute();
   }
   return $insert;
+}
+
+function generate_winner($data) {
+  $conn = db_object();
+  if($conn == false) {
+    return false;
+  }
+  if(!empty($data) && is_array($data)) {
+    $sql = "UPDATE lotteries SET win_1 = " . $data['win_1'] . ", win_2 = " . $data['win_2'] . ", win_3 = " . $data['win_3'] . ", win_4 = " . $data['win_4'] . ", win_5 = " . $data['win_5'] . ", win_6 = " . $data['win_6'] . " WHERE lotteries.lotto_id = " . $data['lotto_id'];
+    $conn->exec($sql);
+    echo "Numbers have been generated successfully";
+  }
 }
  ?>

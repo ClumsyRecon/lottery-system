@@ -20,7 +20,8 @@ function gen_winner(lotto) {
           }
       }
   } while (swapped);
-  $.post("../php/generate_winner.php",
+  //$.post("../php/generate_winner.php",
+  $.post("../controller.php",
   {
     num1: numbers[0],
     num2: numbers[1],

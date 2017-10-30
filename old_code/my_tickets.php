@@ -11,7 +11,7 @@
     <div class="lottery">
       <h2><?php echo $row['name'] ?></h2>
       <div class="info">
-        <div>Prize: $<?php echo $row['prize'] ?></div>
+        <div>Prize test: $<?php echo $row['prize'] ?></div>
         <div>Date: <?php echo $row['date'] ?></div>
       </div>
       <h3>Numbers</h3>
