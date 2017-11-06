@@ -1,4 +1,5 @@
 <link href="css/forms.css" rel="stylesheet">
+<link href="css/svg.css" rel="stylesheet">
 <div id="login">
   <form class="col s12" action="controller.php" method="post">
     <div>
@@ -19,3 +20,63 @@
     </button>
   </form>
 </div>
+<svg width="500" height="100">
+  <circle id="circle1" r="10" cx="50" cy="50" fill="black" />
+  <circle id="circle2" r="10" cx="150" cy="50" fill="black" />
+  <circle id="circle3" r="10" cx="250" cy="50" fill="black" />
+  <animate id="timer" begin="0;shrink3.end" dur="3s" attributeName="visibility" from="hide" to="hide"/>
+  <animate
+           xlink:href="#circle1"
+           attributeName="r"
+           from="10"
+           to="25"
+           dur="0.5s"
+           begin="timer.begin"
+           fill="freeze"
+           id="grow1"/>
+  <animate
+           xlink:href="#circle1"
+           attributeName="r"
+           from="25"
+           to="10"
+           dur="0.5s"
+           begin="grow1.begin + 0.5s"
+           fill="freeze"
+           id="shrink1"/>
+  <animate
+           xlink:href="#circle2"
+           attributeName="r"
+           from="10"
+           to="25"
+           dur="0.5s"
+           begin="shrink1.begin + 0.5s"
+           fill="freeze"
+           id="grow2"/>
+  <animate
+           xlink:href="#circle2"
+           attributeName="r"
+           from="25"
+           to="10"
+           dur="0.5s"
+           begin="grow2.begin + 0.5s"
+           fill="freeze"
+           id="shrink2"/>
+  <animate
+           xlink:href="#circle3"
+           attributeName="r"
+           from="10"
+           to="25"
+           dur="0.5s"
+           begin="shrink2.begin + 0.5s"
+           fill="freeze"
+           id="grow3"/>
+  <animate
+           xlink:href="#circle3"
+           attributeName="r"
+           from="25"
+           to="10"
+           dur="0.5s"
+           begin="grow3.begin + 0.5s"
+           fill="freeze"
+           id="shrink3"/>
+</svg>
