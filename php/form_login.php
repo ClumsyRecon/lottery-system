@@ -1,7 +1,8 @@
 <link href="css/forms.css" rel="stylesheet">
 <link href="css/svg.css" rel="stylesheet">
+<script type="text/javascript" src="js/storage.js"></script>
 <div id="login">
-  <form class="col s12" action="controller.php" method="post">
+  <form class="col s12" action="controller.php" method="post" onsubmit="storeName()">
     <div>
       <div class="input-field s12">
         <input placeholder="Enter your email" id="email" name="email" type="email" class="validate">
@@ -20,6 +21,7 @@
     </button>
   </form>
 </div>
+<script type="text/javascript"> getName(); </script>
 <svg width="350" height="100">
   <circle id="circle1" r="10" cx="50" cy="50" fill="black" />
   <circle id="circle2" r="10" cx="150" cy="50" fill="black" />
