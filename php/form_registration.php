@@ -1,37 +1,38 @@
 <link href="css/forms.css" rel="stylesheet">
+<script type="text/javascript" src="js/storage.js"></script>
 <div id="registration">
-  <form class="col s12" action="controller.php" method="post">
+  <form class="col s12" action="controller.php" method="post" onsubmit="clearData()">
     <div>
       <div class="input-field s12">
-        <input placeholder="Enter your first name" id="first_name" name="first_name" type="text" class="validate">
+        <input placeholder="Enter your first name" id="first_name" name="first_name" type="text" class="validate" onchange="storeData(this)" required>
         <label for="first_name">First Name</label>
       </div>
     </div>
 
     <div>
       <div class="input-field s12">
-        <input placeholder="Enter your last name" id="last_name" name="last_name" type="text" class="validate">
+        <input placeholder="Enter your last name" id="last_name" name="last_name" type="text" class="validate" onchange="storeData(this)" required>
         <label for="last_name">Last Name</label>
       </div>
     </div>
 
     <div>
       <div class="input-field s12">
-        <input id="dob" name="dob" type="date" class="datepicker" placeholder="yyyy-mm-dd">
+        <input id="dob" name="dob" type="date" class="datepicker" placeholder="yyyy-mm-dd" onchange="storeData(this)" required>
         <label for="dob">Date of Birth</label>
       </div>
     </div>
 
     <div>
       <div class="input-field s12">
-        <input placeholder="Enter your email" id="email" name="email" type="email" class="validate">
+        <input placeholder="Enter your email" id="email" name="email" type="email" class="validate" onchange="storeData(this)" required>
         <label for="email" class="active">Email</label>
       </div>
     </div>
 
     <div>
       <div class="input-field s12">
-        <input id="password" type="password" name="password" class="validate" placeholder="Enter your password">
+        <input id="password" type="password" name="password" class="validate" placeholder="Enter your password" required>
         <label for="password">Password</label>
       </div>
     </div>
@@ -45,6 +46,7 @@
   </form>
 </div>
 <script type="text/javascript">
+  loadData();
   $('.datepicker').pickadate({
   selectMonths: true,
   selectYears: 100,
