@@ -141,5 +141,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
       echo json_encode($guest);
     }
   }
+  if(isset($_GET['get_lotteries'])) {
+    header('Content-Type: application/json');
+    echo json_encode(db_get_lotteries());
+  }
 }
 ?>

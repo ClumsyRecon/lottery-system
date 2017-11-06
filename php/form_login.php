@@ -20,7 +20,7 @@
     </button>
   </form>
 </div>
-<svg width="500" height="100">
+<svg width="350" height="100">
   <circle id="circle1" r="10" cx="50" cy="50" fill="black" />
   <circle id="circle2" r="10" cx="150" cy="50" fill="black" />
   <circle id="circle3" r="10" cx="250" cy="50" fill="black" />

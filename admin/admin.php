@@ -53,7 +53,8 @@
   </div>
 
   <div class="container">
-    <?php show_results(db_get_results()); ?>
+    <script type="text/javascript" src="../js/admin-view.js"></script>
+    <div id="lottos"></div>
     <div class="row" onClick="display(true)">
       <div class="col s2">
         <a id="new_lotto" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i><h3 id="new_lotto_label">Create Lottery</h3></a>

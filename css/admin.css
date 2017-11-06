@@ -16,5 +16,8 @@
 }
 .lottery .row {
   margin-left: 0;
-  margin-right: 0; 
+  margin-right: 0;
+}
+#new_lotto {
+  margin-top: 20px;
 }
