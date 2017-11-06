@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2017 at 03:44 AM
+-- Generation Time: Nov 06, 2017 at 06:31 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -44,14 +44,9 @@ CREATE TABLE `lotteries` (
 --
 
 INSERT INTO `lotteries` (`lotto_id`, `name`, `prize`, `date`, `win_1`, `win_2`, `win_3`, `win_4`, `win_5`, `win_6`) VALUES
-(1, 'Random Lottery', '50000', '2017-07-31', 10, 21, 27, 32, 35, 40),
-(2, 'Random Lottery', '20000', '2017-08-24', 1, 2, 3, 4, 5, 6),
-(3, 'Test', '13000', '2017-09-11', 8, 12, 23, 26, 28, 35),
-(4, 'Jackpot', '120000', '2017-10-13', 7, 12, 13, 27, 36, 51),
-(8, 'Testing', '2000', '2017-10-17', 8, 13, 16, 38, 42, 51),
-(9, 'Lotto', '50000', '2017-10-09', 12, 17, 25, 47, 50, 58),
-(10, 'Powerball', '10000', '2017-10-24', 16, 37, 38, 51, 56, 60),
-(11, 'Jackpot', '1000000', '2017-11-14', 9, 18, 19, 24, 34, 53);
+(15, 'Lottery', '10000', '2017-11-30', NULL, NULL, NULL, NULL, NULL, NULL),
+(16, 'Weekly Lotto', '3000', '2017-11-05', 8, 24, 33, 51, 57, 59),
+(17, 'Powerball', '500000', '2017-11-21', 21, 25, 30, 35, 50, 53);
 
 -- --------------------------------------------------------
 
@@ -76,7 +71,12 @@ CREATE TABLE `members` (
 INSERT INTO `members` (`member_id`, `first_name`, `last_name`, `dob`, `email`, `password`, `usertype`) VALUES
 (1, 'Daniel', 'Johansson', '1998-09-01', 'theclumsyrecon@yahoo.com.au', '$2y$10$4IKI5q7XPPggdd8f6P76/.qKyvon/MVuuonaeRrZaXTPFfywqrF0K', 'member'),
 (2, 'Bob', 'Brown', '1990-07-10', 'bob@brown.com', '$2y$10$4IKI5q7XPPggdd8f6P76/.qKyvon/MVuuonaeRrZaXTPFfywqrF0K', 'member'),
-(3, 'Test', 'Ing', '2017-10-09', 'test@test.com', '$2y$10$4IKI5q7XPPggdd8f6P76/.qKyvon/MVuuonaeRrZaXTPFfywqrF0K', 'admin');
+(3, 'Test', 'Ing', '2017-10-09', 'test@test.com', '$2y$10$4IKI5q7XPPggdd8f6P76/.qKyvon/MVuuonaeRrZaXTPFfywqrF0K', 'admin'),
+(5, 'aaaaaa', 'aaaaaaa', '2017-10-08', 'a@a.com', '$2y$10$ANWwAw4.4LtNoq49nf/5nueu6jO10U43D9xwZ8fo13Z8LmkfvR83K', 'member'),
+(6, 'New', 'Person', '2017-10-10', 'person@mail.com', '$2y$10$uSpaHEMXo9sNI3BAudq5OOHqAwW.1b/m7uC/SI57O6SLuhuP.d2zK', 'member'),
+(7, 'Ae', 'Bee', '2017-11-01', 'abc@abc.com', '$2y$10$fAzZY/BuL29BxhwkQNzKpuWzFDMe0DJ52BITbMQs6Nm8nY9jXPW7y', 'member'),
+(8, 'zzz', 'zzzzzz', '2017-11-03', 'zzz@zzz.z', '$2y$10$Uj2tuKNO0ESg8aWzk2oUiejv.kvzuce3K7TN7ulIKa.XLux7M1wcO', 'member'),
+(9, 'aaaaa', 'ssss', '2017-11-01', 'dddd@s', '$2y$10$1HHhghkpCVl7U92C7le1DOmryfwJAue31TcUbFZG/Wl.ssR/axd6S', 'member');
 
 -- --------------------------------------------------------
 
@@ -123,13 +123,7 @@ CREATE TABLE `tickets` (
 --
 
 INSERT INTO `tickets` (`ticket_id`, `lotto_id`, `user_id`, `num_1`, `num_2`, `num_3`, `num_4`, `num_5`, `num_6`) VALUES
-(1, 1, 1, 1, 12, 23, 34, 45, 56),
-(2, 1, 1, 1, 2, 4, 8, 16, 32),
-(3, 1, 2, 1, 11, 21, 31, 41, 51),
-(4, 1, 1, 1, 2, 3, 4, 5, 6),
-(5, 1, 2, 11, 12, 13, 14, 15, 16),
-(6, 4, 1, 1, 12, 23, 34, 45, 56),
-(7, 4, 1, 51, 52, 53, 54, 55, 56);
+(34, 17, 1, 1, 3, 5, 7, 9, 11);
 
 --
 -- Indexes for dumped tables
@@ -170,12 +164,12 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT for table `lotteries`
 --
 ALTER TABLE `lotteries`
-  MODIFY `lotto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `lotto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `payment_method`
 --
@@ -185,7 +179,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- Constraints for dumped tables
 --
