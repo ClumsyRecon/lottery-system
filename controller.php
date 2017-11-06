@@ -5,7 +5,8 @@ if(isset($_POST['create'])) {
   if($_POST['create'] == 'lottery') {
     $values = array('name' => $_POST['name'],
                     'prize' => $_POST['prize'],
-                    'date' => $_POST['date']
+                    'date' => $_POST['date'],
+                    'image' => $_POST['image']
                   );
     create_lottery($values);
     header('Location: admin/admin.php');

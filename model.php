@@ -270,6 +270,9 @@ function show_lotteries($lotteries) {
       foreach ($lotteries as $lottery) {
       ?>
         <div class="lottery">
+          <aside style="float:left;margin-top:20px;margin-right:20px;" class="image">
+            <img width="150px" height="150px" src="images/<?php echo $lottery['image'] ?>" alt="<?php echo $lottery['image'] ?>">
+          </aside>
           <h2><?php echo $lottery['name'] ?></h2>
           <div class="row info">
             <h3>Prize:

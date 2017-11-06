@@ -11,9 +11,20 @@
       </div>
     </div>
     <div class="row">
-      <div class="input-field col s12">
+      <div class="input-field col s6">
         <input id="date" name="date" type="date" class="datepicker">
         <label for="date">Date</label>
+      </div>
+      <div class="input-field col s6">
+        <div style="margin-top:0;" class="file-field input-field">
+          <div class="btn">
+            <span>File</span>
+            <input name="image" type="file" accept="image/*">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
       </div>
     </div>
     <input id="create" type="hidden" name="create" value="lottery">
