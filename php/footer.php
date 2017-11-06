@@ -29,3 +29,10 @@
     ?>
   </div>
 </div>
+<script>
+(function($){
+  $(function(){
+    $('.button-collapse').sideNav();
+  });
+})(jQuery);
+</script>

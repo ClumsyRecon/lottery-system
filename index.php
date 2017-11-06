@@ -40,10 +40,11 @@ include("model.php");
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="view.php?page=lotteries">View Lotteries</a></li>
+        <li><a href="index.php">Home</a></li>
         <?php
         if(isset($_SESSION["login"])) {
           ?>
+          <li><a href="view.php?page=tickets">My Tickets</a></li>
           <li><a href="view.php?page=logout">Logout</a></li>
           <?php
         } else {
@@ -72,6 +73,5 @@ include("model.php");
   <?php show_lotteries(db_get_lotteries()); ?>
 
   <?php include('php/footer.php'); ?>
-
   </body>
 </html>
