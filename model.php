@@ -250,7 +250,7 @@ function db_get_lotteries() {
   if($conn == false) {
     return false;
   }
-  $sql = "SELECT * FROM lotteries ORDER BY date";
+  $sql = "SELECT * FROM lotteries WHERE date > CURRENT_DATE ORDER BY date";
   try {
     $res = $conn->prepare($sql);
     $res->execute();

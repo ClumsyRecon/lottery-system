@@ -3,11 +3,16 @@ include_once('model.php');
 
 if(isset($_POST['create'])) {
   if($_POST['create'] == 'lottery') {
+    $destination_path = 'images/' . $_FILES['image']['name'];
+    move_uploaded_file($_FILES['image']['tmp_name'], $destination_path);
+    $image_filename = $_FILES['image']['name'];
     $values = array('name' => $_POST['name'],
                     'prize' => $_POST['prize'],
                     'date' => $_POST['date'],
-                    'image' => $_POST['image']
+                    'image' => $image_filename
                   );
+
+
     create_lottery($values);
     header('Location: admin/admin.php');
   }
