@@ -1,0 +1,1 @@
+find -name '*.php' -exec C:/xampp/php/php.exe -l {} \;
