@@ -274,7 +274,7 @@ function show_lotteries($lotteries) {
             <img width="150px" height="150px" src="images/<?php echo $lottery['image'] ?>" alt="<?php echo $lottery['image'] ?>">
           </aside>
           <h2><?php echo $lottery['name'] ?></h2>
-          <div class="row info">
+          <div class="info">
             <h3>Prize:
               <?php
               $price = strrev($lottery['prize']);
@@ -382,17 +382,32 @@ function show_lotteries($lotteries) {
             </h3>
             <?php
             if(isset($_SESSION['login']) && $_SESSION['login']) {
-            ?>
-              <form action="controller.php" method="get">
-                <input type="hidden" name="lotto_id" value=<?php echo $lottery['lotto_id']; ?>>
-                <input type="hidden" name="lotto_name" value=<?php echo $lottery['name']; ?>>
-                <input type="hidden" name="lotto_date" value='<?php echo $day1." ".$day2." ".$month." ".$year; ?>'>
-                <input type="hidden" name="lotto_prize" value=<?php echo '$'.$prize; ?>>
-                <button class="btn waves-effect waves-light" type="submit">Buy Ticket
-                  <i class="material-icons right">send</i>
-                </button>
-              </form>
-              <?php
+              if(!isset($lottery['win_1'])) {
+                ?>
+                <form action="controller.php" method="get">
+                  <input type="hidden" name="lotto_id" value=<?php echo $lottery['lotto_id']; ?>>
+                  <input type="hidden" name="lotto_name" value=<?php echo $lottery['name']; ?>>
+                  <input type="hidden" name="lotto_date" value='<?php echo $day1." ".$day2." ".$month." ".$year; ?>'>
+                  <input type="hidden" name="lotto_prize" value=<?php echo '$'.$prize; ?>>
+                  <button class="btn waves-effect waves-light" type="submit">Buy Ticket
+                    <i class="material-icons right">send</i>
+                  </button>
+                </form>
+                <?php
+              } else {
+                ?>
+                <h3>A winner has already been drawn.</h3>
+                <h3>Numbers</h3>
+                <div class="row">
+                  <div class="col s1 numbers"><?php echo $lottery['win_1'] ?></div>
+                  <div class="col s1 numbers"><?php echo $lottery['win_2'] ?></div>
+                  <div class="col s1 numbers"><?php echo $lottery['win_3'] ?></div>
+                  <div class="col s1 numbers"><?php echo $lottery['win_4'] ?></div>
+                  <div class="col s1 numbers"><?php echo $lottery['win_5'] ?></div>
+                  <div class="col s1 numbers"><?php echo $lottery['win_6'] ?></div>
+                </div>
+                <?php
+              }
             }
             ?>
           </div>
