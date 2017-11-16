@@ -4,14 +4,14 @@
   <form class="col s12" action="controller.php" method="post" onsubmit="clearData()">
     <div>
       <div class="input-field s12">
-        <input placeholder="Enter your first name" id="first_name" name="first_name" type="text" class="validate" onchange="storeData(this)" required>
+        <input placeholder="Enter your first name" id="first_name" name="first_name" type="text" class="validate" pattern="[A-Za-z]+" onchange="storeData(this)" required>
         <label for="first_name">First Name</label>
       </div>
     </div>
 
     <div>
       <div class="input-field s12">
-        <input placeholder="Enter your last name" id="last_name" name="last_name" type="text" class="validate" onchange="storeData(this)" required>
+        <input placeholder="Enter your last name" id="last_name" name="last_name" type="text" class="validate" pattern="[A-Za-z]+" onchange="storeData(this)" required>
         <label for="last_name">Last Name</label>
       </div>
     </div>
@@ -56,5 +56,21 @@
   close: 'Ok',
   closeOnSelect: true,
   format: 'yyyy-mm-dd'
+  });
+  function checkDate() {
+  	if ($('#dob').val() == '') {
+      $('#dob').addClass('invalid')
+    } else {
+      $('#date').removeClass('invalid')
+    }
+  }
+
+  $('form').submit(function() {
+    checkDate();
+    return false;
+  });
+
+  $('#dob').change(function() {
+    checkDate();
   });
 </script>

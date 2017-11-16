@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
       }
       else {
-        header('location:view.php?page=login');
+        header('location:view.php?page=login&login=failed');
       }
     }
     catch(PDOException $e) {

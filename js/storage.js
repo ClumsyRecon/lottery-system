@@ -22,6 +22,6 @@ function loadData() {
 
 function clearData() {
   for (var i = 0; i < sessionStorage.length; i++) {
-    alert(sessionStorage[sessionStorage.key(i)]);
+    //alert(sessionStorage[sessionStorage.key(i)]);
   }
 }
