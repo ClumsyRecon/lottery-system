@@ -48,15 +48,16 @@
   });
   function checkDate() {
   	if ($('#date').val() == '') {
-      $('#date').addClass('invalid')
+      $('#date').addClass('invalid');
+      return false;
     } else {
-      $('#date').removeClass('invalid')
+      $('#date').removeClass('invalid');
+      return true;
     }
   }
 
   $('form').submit(function() {
-    checkDate();
-    return false;
+    return checkDate();
   });
 
   $('#date').change(function() {

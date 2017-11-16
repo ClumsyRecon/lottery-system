@@ -32,6 +32,10 @@ switch ($_GET['page']) {
     show_tickets(db_get_users_lotteries($_SESSION['user_id']), db_get_users_tickets($_SESSION['user_id']));
     break;
 
+  case 'edit':
+    include_once('php/form_edit.php');
+    break;
+
   default:
     echo 'Page not found.';
     break;

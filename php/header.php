@@ -6,6 +6,7 @@
       if(isset($_SESSION["login"])) {
         ?>
         <li><a href="view.php?page=tickets">My Tickets</a></li>
+        <li><a href="view.php?page=edit">Edit Details</a></li>
         <li><a href="view.php?page=logout">Logout</a></li>
         <?php
       } else {

@@ -83,6 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $stmt->execute();
       $rows = $stmt -> fetch();
       $_SESSION["user"] = $rows['first_name'];
+      $_SESSION["lname"] = $rows['last_name'];
       $_SESSION["member"] = $rows['first_name'].' '.$rows['last_name'];
       $_SESSION["user_id"] = $rows['member_id'];
       $_SESSION["usertype"] = $rows['usertype'];
@@ -107,6 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $rows = $stmt -> fetch();
       if (password_verify($password, $rows['password'])) {
         $_SESSION["user"] = $rows['first_name'];
+        $_SESSION["lname"] = $rows['last_name'];
         $_SESSION["member"] = $rows['first_name'].' '.$rows['last_name'];
         $_SESSION["user_id"] = $rows['member_id'];
         $_SESSION["usertype"] = $rows['usertype'];
@@ -152,6 +154,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo $_SESSION["email"];
     echo $_SESSION["user_id"];
     echo $_POST["lotto_id"];
+  }
+
+  if(isset($_POST['edit'])) {
+    $data = array(
+      'first_name' => !empty($_POST['first_name'])? test_user_input(($_POST['first_name'])): null,
+      'last_name' => !empty($_POST['last_name'])? test_user_input(($_POST['last_name'])): null,
+      'member_id' => !empty($_POST['member_id'])? test_user_input(($_POST['member_id'])): null
+    );
+    updateMember($data);
+    header('location:index.php');
+  }
+  if(isset($_POST['delete'])) {
+    deleteMember($_POST['delete']);
+    header('location:view.php?page=logout');
   }
 }
 

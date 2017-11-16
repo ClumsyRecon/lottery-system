@@ -53,6 +53,27 @@ function insertData($table, $data) {
   return $insert;
 }
 
+function updateMember($data) {
+  $conn = db_object();
+  if(!empty($data) && is_array($data)) {
+    $_SESSION["user"] = $data['first_name'];
+    $_SESSION["lname"] = $data['last_name'];
+    $sql = "UPDATE members SET first_name='".$data['first_name']."', last_name='".$data['last_name']."' WHERE member_id=".$data['member_id'];
+    $query = $conn->prepare($sql);
+    print_r($data);
+    $update = $query->execute();
+  }
+  return $update;
+}
+
+function deleteMember($id) {
+  $conn = db_object();
+  $sql = "DELETE FROM members WHERE member_id=".$id;
+  $query = $conn->prepare($sql);
+  $delete = $query->execute();
+  return $delete;
+}
+
 function db_get_users_tickets($member) {
   $conn = db_object();
   if($conn == false) {

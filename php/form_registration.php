@@ -59,15 +59,16 @@
   });
   function checkDate() {
   	if ($('#dob').val() == '') {
-      $('#dob').addClass('invalid')
+      $('#dob').addClass('invalid');
+      return false;
     } else {
-      $('#date').removeClass('invalid')
+      $('#dob').removeClass('invalid');
+      return true;
     }
   }
 
   $('form').submit(function() {
-    checkDate();
-    return false;
+    return checkDate();
   });
 
   $('#dob').change(function() {
