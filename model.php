@@ -262,6 +262,9 @@ function show_tickets($lotteries, $tickets) {
                 </div>
               </div>
               <?php
+              if($ticket['num_1'] == $lottery['win_1'] && $ticket['num_2'] == $lottery['win_2'] && $ticket['num_3'] == $lottery['win_3'] && $ticket['num_4'] == $lottery['win_4'] && $ticket['num_5'] == $lottery['win_5'] && $ticket['num_6'] == $lottery['win_6']) {
+                echo '<h3>You won!</h3>';
+              }
             }
           }
           if(!isset($lottery['win_1'])) {

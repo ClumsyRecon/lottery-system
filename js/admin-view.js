@@ -1,5 +1,5 @@
 $.get("../controller.php?get_winner=1", function(data, status){
-  console.log(data);
+  //console.log(data);
   for (var i = 0; i < data.length; i++) {
     if(data[i].first_name != null) {
       sessionStorage.setItem('lotto_'+data[i].lotto_id, 'The winner is '+data[i].first_name+' '+data[i].last_name);
