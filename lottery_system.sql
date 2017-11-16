@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2017 at 04:25 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.1
+-- Generation Time: Nov 16, 2017 at 11:54 AM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -45,11 +47,10 @@ CREATE TABLE `lotteries` (
 --
 
 INSERT INTO `lotteries` (`lotto_id`, `name`, `prize`, `date`, `win_1`, `win_2`, `win_3`, `win_4`, `win_5`, `win_6`, `image`) VALUES
-(15, 'Lottery', '10000', '2017-11-30', NULL, NULL, NULL, NULL, NULL, NULL, 'test.jpg'),
-(16, 'Weekly Lotto', '3000', '2017-11-05', 8, 24, 33, 51, 57, 59, 'test.jpg'),
-(17, 'Powerball', '500000', '2017-11-21', 21, 25, 30, 35, 50, 53, 'test.jpg'),
-(19, 'Test', '1000', '2017-11-06', 4, 11, 32, 35, 42, 44, 'test.jpg'),
-(20, 'aaaa', '4000', '2017-11-07', 6, 11, 14, 28, 31, 43, 'test.jpg');
+(23, 'Lotto', '10000', '2017-11-17', 1, 2, 3, 4, 5, 6, 'test.jpg'),
+(24, 'Powerball', '5000', '2017-11-30', 1, 8, 15, 20, 29, 52, 'Koala.jpg'),
+(25, 'Test', '1000', '2017-11-28', 1, 2, 3, 4, 5, 6, 'Penguins.jpg'),
+(26, 'Jackpot', '30000', '2018-01-31', NULL, NULL, NULL, NULL, NULL, NULL, 'Desert.jpg');
 
 -- --------------------------------------------------------
 
@@ -73,14 +74,8 @@ CREATE TABLE `members` (
 
 INSERT INTO `members` (`member_id`, `first_name`, `last_name`, `dob`, `email`, `password`, `usertype`) VALUES
 (1, 'Daniel', 'Johansson', '1998-09-01', 'theclumsyrecon@yahoo.com.au', '$2y$10$4IKI5q7XPPggdd8f6P76/.qKyvon/MVuuonaeRrZaXTPFfywqrF0K', 'member'),
-(2, 'Bob', 'Brown', '1990-07-10', 'bob@brown.com', '$2y$10$4IKI5q7XPPggdd8f6P76/.qKyvon/MVuuonaeRrZaXTPFfywqrF0K', 'member'),
 (3, 'Test', 'Ing', '2017-10-09', 'test@test.com', '$2y$10$4IKI5q7XPPggdd8f6P76/.qKyvon/MVuuonaeRrZaXTPFfywqrF0K', 'admin'),
-(5, 'aaaaaa', 'aaaaaaa', '2017-10-08', 'a@a.com', '$2y$10$ANWwAw4.4LtNoq49nf/5nueu6jO10U43D9xwZ8fo13Z8LmkfvR83K', 'member'),
-(6, 'New', 'Person', '2017-10-10', 'person@mail.com', '$2y$10$uSpaHEMXo9sNI3BAudq5OOHqAwW.1b/m7uC/SI57O6SLuhuP.d2zK', 'member'),
-(7, 'Ae', 'Bee', '2017-11-01', 'abc@abc.com', '$2y$10$fAzZY/BuL29BxhwkQNzKpuWzFDMe0DJ52BITbMQs6Nm8nY9jXPW7y', 'member'),
-(8, 'zzz', 'zzzzzz', '2017-11-03', 'zzz@zzz.z', '$2y$10$Uj2tuKNO0ESg8aWzk2oUiejv.kvzuce3K7TN7ulIKa.XLux7M1wcO', 'member'),
-(9, 'aaaaa', 'ssss', '2017-11-01', 'dddd@s', '$2y$10$1HHhghkpCVl7U92C7le1DOmryfwJAue31TcUbFZG/Wl.ssR/axd6S', 'member'),
-(10, 'John', 'Perry', '2017-11-12', 'john@perry.com', '$2y$10$LH1mk9a3s.3iy7d6hbwnAOBpQfgozj57K8de3UjFOllrZrXT0sQTS', 'member');
+(13, 'Bob', 'Brown', '2017-11-01', 'bob@brown.com', '$2y$10$HbHTd6.FpXsJFxeV.HY0d.AibZN8pFomskGNYAXTfnWEv1XZOU2Am', 'member');
 
 -- --------------------------------------------------------
 
@@ -127,10 +122,10 @@ CREATE TABLE `tickets` (
 --
 
 INSERT INTO `tickets` (`ticket_id`, `lotto_id`, `user_id`, `num_1`, `num_2`, `num_3`, `num_4`, `num_5`, `num_6`) VALUES
-(34, 17, 1, 1, 3, 5, 7, 9, 11),
-(35, 20, 10, 1, 13, 14, 15, 27, 40),
-(36, 20, 10, 1, 2, 3, 4, 5, 6),
-(37, 15, 10, 14, 15, 26, 27, 38, 39);
+(40, 23, 1, 1, 2, 3, 4, 5, 6),
+(41, 24, 1, 1, 13, 25, 36, 37, 49),
+(42, 25, 1, 1, 14, 27, 40, 52, 54),
+(43, 25, 13, 1, 2, 3, 4, 5, 6);
 
 --
 -- Indexes for dumped tables
@@ -171,22 +166,26 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT for table `lotteries`
 --
 ALTER TABLE `lotteries`
-  MODIFY `lotto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `lotto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
 --
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT for table `payment_method`
 --
 ALTER TABLE `payment_method`
   MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+
 --
 -- Constraints for dumped tables
 --
@@ -203,6 +202,7 @@ ALTER TABLE `payment_method`
 ALTER TABLE `tickets`
   ADD CONSTRAINT `lotto_id_FK` FOREIGN KEY (`lotto_id`) REFERENCES `lotteries` (`lotto_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_id_FK` FOREIGN KEY (`user_id`) REFERENCES `members` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

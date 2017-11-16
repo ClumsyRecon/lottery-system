@@ -192,5 +192,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     header('Content-Type: application/json');
     echo json_encode(db_get_lotteries());
   }
+  if(isset($_GET['get_winner'])) {
+    header('Content-Type: application/json');
+    echo json_encode(db_get_winner());
+  }
 }
 ?>

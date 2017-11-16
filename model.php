@@ -74,6 +74,23 @@ function deleteMember($id) {
   return $delete;
 }
 
+function db_get_winner() {
+  $conn = db_object();
+  if($conn == false) {
+    return false;
+  }
+  $sql = "SELECT lotteries.lotto_id, members.member_id, members.first_name, members.last_name, tickets.num_1, tickets.num_2, tickets.num_3, tickets.num_4, tickets.num_5, tickets.num_6,  tickets.ticket_id FROM members, lotteries, tickets WHERE num_1 = win_1 AND num_2 = win_2 AND num_3 = win_3 AND num_4 = win_4 AND num_5 = win_5 AND num_6 = win_6 AND members.member_id = tickets.user_id AND lotteries.lotto_id = tickets.lotto_id";
+
+  try {
+    $res = $conn->prepare($sql);
+    $res->execute();
+  } catch (PDOException $e) {
+    $_SESSION['error'] = $e;
+    return false;
+  }
+  return $res->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function db_get_users_tickets($member) {
   $conn = db_object();
   if($conn == false) {
@@ -96,7 +113,7 @@ function db_get_users_lotteries($member) {
   if($conn == false) {
     return false;
   }
-  $sql = "SELECT DISTINCT tickets.user_id, tickets.lotto_id, lotteries.name, lotteries.prize, lotteries.date FROM tickets, lotteries WHERE tickets.lotto_id = lotteries.lotto_id AND user_id = ".$member." ORDER BY lotteries.date";
+  $sql = "SELECT DISTINCT tickets.user_id, tickets.lotto_id, lotteries.* FROM tickets, lotteries WHERE tickets.lotto_id = lotteries.lotto_id AND user_id = ".$member." ORDER BY lotteries.date";
 
   try {
     $res = $conn->prepare($sql);
@@ -247,18 +264,24 @@ function show_tickets($lotteries, $tickets) {
               <?php
             }
           }
+          if(!isset($lottery['win_1'])) {
           ?>
-          <form action="controller.php" method="get">
-            <input type="hidden" name="lotto_id" value=<?php echo $lottery['lotto_id']; ?>>
-            <input type="hidden" name="lotto_name" value=<?php echo $lottery['name']; ?>>
-            <input type="hidden" name="lotto_date" value='<?php echo $day1." ".$day2." ".$month." ".$year; ?>'>
-            <input type="hidden" name="lotto_prize" value=<?php echo '$'.$prize; ?>>
-            <button class="btn waves-effect waves-light" type="submit">Buy More
-              <i class="material-icons right">send</i>
-            </button>
-          </form>
-        </div>
-        <?php
+            <form action="controller.php" method="get">
+              <input type="hidden" name="lotto_id" value=<?php echo $lottery['lotto_id']; ?>>
+              <input type="hidden" name="lotto_name" value=<?php echo $lottery['name']; ?>>
+              <input type="hidden" name="lotto_date" value='<?php echo $day1." ".$day2." ".$month." ".$year; ?>'>
+              <input type="hidden" name="lotto_prize" value=<?php echo '$'.$prize; ?>>
+              <button class="btn waves-effect waves-light" type="submit">Buy More
+                <i class="material-icons right">send</i>
+              </button>
+            </form>
+          </div>
+          <?php
+        } else {
+          ?>
+          <h3>Lottery has ended.</h3>
+          <?php
+        }
       }
       ?>
     </div>
